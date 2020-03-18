@@ -1,0 +1,3 @@
+chown salomon:salomon -R a.seq_to_seq/ b.AnnotatedTransformer/ c.FairSeq/
+
+sudo chmod 755 -R a.seq_to_seq/
