@@ -1,0 +1,10 @@
+
+1. git clone https://github.com/facebookresearch/ParlAI.git ./ParlAI
+2. cd ParlAI/
+3. python setup.py develop
+4. python -m parlai.scripts.interactive -mf zoo:convai2/seq2seq/convai2_self_seq2seq_model -m legacy:seq2seq:0 -bs 1
+
+## other models
+https://parl.ai/docs/zoo.html
+try this one:
+python examples/interactive.py -mf zoo:pretrained_transformers/model_poly/model -t convai2
