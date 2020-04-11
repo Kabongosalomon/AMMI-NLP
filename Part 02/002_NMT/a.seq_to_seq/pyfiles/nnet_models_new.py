@@ -151,8 +151,15 @@ class Attention_Module(nn.Module):
 
         x = self.l1(hidden)
 #         att_score = (encoder_outs.transpose(0, 1) * x.unsqueeze(0)).sum(dim=2)
-        att_score = torch.bmm(encoder_outs, x.unsqueeze(-1)); #this is bsz x seq x 1
+        
+        # bmm(input, mat2, out=None) : Performs a batch matrix-matrix product of matrices stored 
+        #                               in :attr:`input` and :attr:`mat2`. must be 3-D tensors
+        # We are unsqueezing x as to make our x, 3-D tensors.
+        att_score = torch.bmm(encoder_outs, x.unsqueeze(-1)); #this is bsz x seq x 1, 
         att_score = att_score.squeeze(-1); #this is bsz x seq
+        
+        # transpose(input, dim0, dim1) -> Tensor Returns a tensor that is a transposed 
+        # version of :attr:`input`. The given dimensions :attr:`dim0` and :attr:`dim1` are swapped.
         att_score = att_score.transpose(0, 1);
         
         seq_mask = self.sequence_mask(src_lens, 

@@ -124,8 +124,8 @@ def load_or_create_language_obj(source_name, source_lang_obj_path, source_data, 
 def load_language_pairs(filepath, source_name = 'en', target_name = 'vi',
 						lang_obj_path = '.',  minimum_count = 5):
 
-	source = read_dataset(filepath['source']);
-	target = read_dataset(filepath['target']);
+	source = read_dataset(filepath['source']);  # filepath is a dict with keys source and target
+	target = read_dataset(filepath['target']);  # filepath is a dict with keys source and target
 	
 	main_df = pd.DataFrame();
 	main_df['source_data'] = source['data'];
